@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <RootNamespace>Acme.FakZan2a</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Acme.FakZan2a.Domain\Acme.FakZan2a.Domain.csproj" />
+    <ProjectReference Include="..\Acme.FakZan2a.Application.Contracts\Acme.FakZan2a.Application.Contracts.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.Account.Application" Version="4.3.3" />
+    <PackageReference Include="Volo.Abp.Identity.Application" Version="4.3.3" />
+    <PackageReference Include="Volo.Abp.PermissionManagement.Application" Version="4.3.3" />
+    <PackageReference Include="Volo.Abp.TenantManagement.Application" Version="4.3.3" />
+    <PackageReference Include="Volo.Abp.FeatureManagement.Application" Version="4.3.3" />
+    <PackageReference Include="Volo.Abp.SettingManagement.Application" Version="4.3.3" />
+  </ItemGroup>
+
+</Project>
