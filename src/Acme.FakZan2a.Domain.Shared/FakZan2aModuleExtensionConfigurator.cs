@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Acme.FakZan2a.Users;
+using System;
+using System.ComponentModel.DataAnnotations;
 using Volo.Abp.Identity;
 using Volo.Abp.ObjectExtending;
 using Volo.Abp.Threading;
@@ -67,6 +69,88 @@ namespace Acme.FakZan2a
              * See the documentation for more:
              * https://docs.abp.io/en/abp/latest/Module-Entity-Extensions
              */
+
+            ObjectExtensionManager.Instance.Modules().ConfigureIdentity(identity =>
+            {
+                identity.ConfigureUser(user =>
+                {
+                    user.AddOrUpdateProperty<string>(
+                        UserConsts.FullNameArabicPropertyName,
+                        options =>
+                        {
+                            options.Attributes.Add(new RequiredAttribute());
+                            options.Attributes.Add(
+                                new StringLengthAttribute(UserConsts.MaxFullNameArabicLength)
+                            );
+                        }
+                    );
+                    user.AddOrUpdateProperty<string>(
+                        UserConsts.FullNameEnglishPropertyName,
+                        options =>
+                        {
+                            options.Attributes.Add(new RequiredAttribute());
+                            options.Attributes.Add(
+                                new StringLengthAttribute(UserConsts.MaxFullNameEnglishLength)
+                            );
+                        }
+                    );
+                    user.AddOrUpdateProperty<string>(
+                        UserConsts.MobilePropertyName,
+                        options =>
+                        {
+                            //options.Attributes.Add(new RequiredAttribute());
+                            options.Attributes.Add(
+                                new StringLengthAttribute(UserConsts.MaxMobileNumberLength)
+                            );
+                        }
+                    );
+                    user.AddOrUpdateProperty<string>(
+                        UserConsts.WhatsAppNumberPropertyName,
+                        options =>
+                        {
+                            //options.Attributes.Add(new RequiredAttribute());
+                            options.Attributes.Add(
+                                new StringLengthAttribute(UserConsts.MaxWhatsAppNumberLength)
+                            );
+                        }
+                    );
+                    user.AddOrUpdateProperty<int>(
+                        UserConsts.GenderPropertyName,
+                        options =>
+                        {
+                            //options.Attributes.Add(new RequiredAttribute());
+                        }
+                    );
+                    user.AddOrUpdateProperty<int>(
+                        UserConsts.LanguagePreferencePropertyName,
+                        options =>
+                        {
+                            //options.Attributes.Add(new RequiredAttribute());
+                        }
+                    );
+                    user.AddOrUpdateProperty<int>(
+                        UserConsts.UserTypePropertyName,
+                        options =>
+                        {
+                            //options.Attributes.Add(new RequiredAttribute());
+                        }
+                    );
+                    user.AddOrUpdateProperty<bool>(
+                        UserConsts.IsActivePropertyName,
+                        options =>
+                        {
+                            //options.Attributes.Add(new RequiredAttribute());
+                        }
+                    );
+                    user.AddOrUpdateProperty<DateTime?>(
+                        UserConsts.DateOfBirthPropertyName,
+                        options =>
+                        {
+                            //options.Attributes.Add(new RequiredAttribute());
+                        }
+                    );
+                });
+            });
         }
     }
 }

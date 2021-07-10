@@ -56,13 +56,13 @@ namespace Acme.FakZan2a.Users
          */
         public string FullNameArabic { get; protected set; }
         public string FullNameEnglish { get; protected set; }
-        public DateTime DateOfBirth { get; protected set; }
+        public DateTime? DateOfBirth { get; protected set; } = DateTime.Now;
         public Gender Gender { get; protected set; }
         public string Mobile { get;protected set; }
         public string WhatsAppNumber { get;protected set; }
         public UserType UserType { get;protected set; }
         public Language LanguagePreference { get; protected set; }
-        public bool IsActive { get;protected set; }
+        public bool IsActive { get; protected set; } = false;
         private AppUser()
         {
             

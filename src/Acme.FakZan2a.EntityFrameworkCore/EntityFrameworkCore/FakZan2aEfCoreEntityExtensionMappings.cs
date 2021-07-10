@@ -1,5 +1,6 @@
 ﻿using Acme.FakZan2a.Users;
 using Microsoft.EntityFrameworkCore;
+using System;
 using Volo.Abp.Identity;
 using Volo.Abp.ObjectExtending;
 using Volo.Abp.Threading;
@@ -45,14 +46,16 @@ namespace Acme.FakZan2a.EntityFrameworkCore
                     nameof(AppUser.FullNameArabic),
                     (entityBuilder, propertyBuilder) =>
                     {
-                        propertyBuilder.IsRequired();
+                        propertyBuilder.HasDefaultValue("");
+                        //propertyBuilder.IsRequired();
                         propertyBuilder.HasMaxLength(UserConsts.MaxFullNameArabicLength);
                     }
                 ).MapEfCoreProperty<IdentityUser, string>(
                     nameof(AppUser.FullNameEnglish),
                     (entityBuilder, propertyBuilder) =>
                     {
-                        propertyBuilder.IsRequired();
+                        propertyBuilder.HasDefaultValue("");
+                        //propertyBuilder.IsRequired();
                         propertyBuilder.HasMaxLength(UserConsts.MaxFullNameEnglishLength);
 
                     }
@@ -60,7 +63,8 @@ namespace Acme.FakZan2a.EntityFrameworkCore
                     nameof(AppUser.Mobile),
                     (entityBuilder, propertyBuilder) =>
                     {
-                        propertyBuilder.IsRequired();
+                        propertyBuilder.HasDefaultValue("");
+                        //propertyBuilder.IsRequired();
                         propertyBuilder.HasMaxLength(UserConsts.MaxMobileNumberLength);
 
                     }
@@ -68,8 +72,49 @@ namespace Acme.FakZan2a.EntityFrameworkCore
                     nameof(AppUser.WhatsAppNumber),
                     (entityBuilder, propertyBuilder) =>
                     {
-                        propertyBuilder.IsRequired();
+                        propertyBuilder.HasDefaultValue("");
+                        //propertyBuilder.IsRequired();
                         propertyBuilder.HasMaxLength(UserConsts.MaxWhatsAppNumberLength);
+
+                    }
+                ).MapEfCoreProperty<IdentityUser, DateTime?>(
+                    nameof(AppUser.DateOfBirth),
+                    (entityBuilder, propertyBuilder) =>
+                    {
+                        propertyBuilder.HasDefaultValue(DateTime.Now);
+                       // propertyBuilder.IsRequired();
+
+                    }
+                ).MapEfCoreProperty<IdentityUser, int?>(
+                    nameof(AppUser.Gender),
+                    (entityBuilder, propertyBuilder) =>
+                    {
+                        propertyBuilder.HasDefaultValue(1);
+                        //propertyBuilder.IsRequired();
+
+                    }
+                ).MapEfCoreProperty<IdentityUser, int?>(
+                    nameof(AppUser.UserType),
+                    (entityBuilder, propertyBuilder) =>
+                    {
+                        propertyBuilder.HasDefaultValue(1);
+                       // propertyBuilder.IsRequired();
+
+                    }
+                ).MapEfCoreProperty<IdentityUser, int?>(
+                    nameof(AppUser.LanguagePreference),
+                    (entityBuilder, propertyBuilder) =>
+                    {
+                        propertyBuilder.HasDefaultValue(1);
+                        //propertyBuilder.IsRequired();
+
+                    }
+                ).MapEfCoreProperty<IdentityUser, bool?>(
+                    nameof(AppUser.IsActive),
+                    (entityBuilder, propertyBuilder) =>
+                    {
+                        propertyBuilder.HasDefaultValue(false);
+                        //propertyBuilder.IsRequired();
 
                     }
                 );
