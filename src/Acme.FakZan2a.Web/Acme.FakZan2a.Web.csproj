@@ -51,8 +51,4 @@
     <PackageReference Include="Volo.Abp.SettingManagement.Web" Version="4.3.3" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Pages\Account\" />
-  </ItemGroup>
-
 </Project>
